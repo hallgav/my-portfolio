@@ -1,2 +1,3 @@
-# my-portfolio
-Tutorial project for server less an react 
+# Gavin Hall Portfolio
+
+This is my professional portfolio. It used AWS and ReactJS
