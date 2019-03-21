@@ -11,3 +11,7 @@ HTML
 CSS
 Font Awesome
 Google Fonts
+
+## Deployment
+
+Use the upload-profile-lambda script to deploy the application files to the cloud
