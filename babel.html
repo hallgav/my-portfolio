@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Babel Demo</title>
+  </head>
+  <body>
+    <main>
+      <label>Name: <input type="text" id="name"/></label>
+      <div id="content"></div>
+    </main>
+
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+      const getMessage = name => `Welcome to Javascript ${name}!`;
+      document.getElementById("content").innerHTML = getMessage("Gavin Hall");
+    </script>
+  </body>
+</html>
