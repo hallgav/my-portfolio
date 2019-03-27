@@ -1,0 +1,39 @@
+{
+    "name": "my-portfolio",
+    "version": "1.0.0",
+    "description": "Gavin Hall Photography Portfolio",
+    "main": "index.html",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "webpack": "webpack",
+        "webpack-watch": "webpack --watch"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/hallgav/my-portfolio.git"
+    },
+    "author": "Gavin Hall",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/hallgav/my-portfolio/issues"
+    },
+    "homepage": "https://github.com/hallgav/my-portfolio#readme",
+    "babel": {
+        "presets": [
+            "@babel/preset-env",
+            "@babel/preset-react"
+        ]
+    },
+    "dependencies": {
+        "react": "^16.7.0",
+        "react-dom": "^16.7.0"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.4.0",
+        "@babel/preset-env": "^7.4.2",
+        "@babel/preset-react": "^7.0.0",
+        "babel-loader": "^8.0.5",
+        "webpack": "^4.29.6",
+        "webpack-cli": "^3.3.0"
+    }
+}
