@@ -25,6 +25,7 @@
         ]
     },
     "dependencies": {
+        "jshint": "^2.10.2",
         "react": "^16.7.0",
         "react-dom": "^16.7.0"
     },
