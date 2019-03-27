@@ -11,6 +11,11 @@ HTML
 CSS
 Font Awesome
 Google Fonts
+Babel
+Webpack
+React
+Chai
+Mocha
 
 ## Deployment
 

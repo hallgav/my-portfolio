@@ -4,16 +4,15 @@ export default class ExampleWork extends Component {
     render() {
         return (
             <section className="section section--alignCentered section--description">
-                {this.props.work.map((example, idx) => {
-                    return (<ExampleWorkBubble example={example} key={idx} />)
-                }
-                )
+                {
+                    this.props.work.map((example, idx) => {
+                        return (<ExampleWorkBubble example={example} key={idx} />);
+                    })
                 }
             </section>
         )
     }
 }
-
 
 class ExampleWorkBubble extends Component {
     render() {
