@@ -1,49 +1,53 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8" />
     <title>React Demo</title>
+    <link rel="stylesheet" href="https://unpkg.com/mocha@6.0.2/mocha.css">
     <style>
-      .messageBox {
-        border: 1px solid;
-        margin: 1em;
-        padding: 2em;
-      }
+        .messageBox {
+            border: 1px solid;
+            margin: 1em;
+            padding: 2em;
+        }
 
-      .error {
-        border-color: red;
-        background-color: #eebbbb;
-      }
+        .error {
+            border-color: red;
+            background-color: #eebbbb;
+        }
 
-      .success {
-        border-color: blue;
-        background-color: #bbbbee;
-      }
+        .success {
+            border-color: blue;
+            background-color: #bbbbee;
+        }
 
-      .hidden {
-        display: none;
-      }
+        .hidden {
+            display: none;
+        }
+
     </style>
-  </head>
+</head>
 
-  <body>
+<body>
     <main id="content"></main>
+    <div id="mocha"></div>
 
-    <script
-      type="text/javascript"
-      src="https://unpkg.com/babel-standalone@6/babel.min.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="https://unpkg.com/react@16.7.0/umd/react.production.min.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="https://unpkg.com/react-dom@16.7.0/umd/react-dom.production.min.js"
-    ></script>
+    <script type="text/javascript" src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/react@16.7.0/umd/react.production.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/react-dom@16.7.0/umd/react-dom.production.min.js"></script>
 
+    <script type="text/javascript" src="https://unpkg.com/chai@3.5.0/chai.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/mocha@6.0.2/mocha.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/mocha@6.0.2/mocha.js"></script>
+
+
+    <!--
+        React scripts
+    -->
     <script type="text/babel" data-presets="react">
-      class NameInput extends React.Component {
+
+        class NameInput extends React.Component {
         constructor(props) {
           super(props);
 
@@ -73,7 +77,7 @@
               <label>
                 Name: <input ref="nameInput" type="text" />
               </label>
-              <button onClick={this.buttonClicked}>Click me!</button>
+              <button id="inputButton" onClick={this.buttonClicked}>Click me!</button>
 
               <MessageBox type={msg.type} message={msg.body} />
             </div>
@@ -93,5 +97,52 @@
 
       ReactDOM.render(<NameInput />, document.getElementById("content"));
     </script>
-  </body>
+
+    <script type="text/babel" data-presets="latest">
+        const assert = chai.assert;
+
+        mocha.ui("bdd");
+        mocha.reporter("html");
+
+        describe('React example Tests', () => {
+            it('Prove math works', () => {
+                assert.equal(5, 2+3, "Math works");
+                assert.notEqual(6, 2+3, "Good math");
+
+            });
+
+            it('Found Component', () => {
+                assert.isDefined(MessageBox, "Our MessageBox component is defined.")
+            });
+
+            it('Lets test a function() ', () => {
+                let myName = "Gavin Hall";
+
+                const greet = (name) => "Hello, " + name + "!";
+                assert.include(greet(myName), myName, "Greeting includes name.")
+            });
+        });
+
+        describe('Document Tests', () => {
+            it('Renders empty message box', () => {
+                let msgBox = document.querySelector(".messageBox")
+                assert.isDefined(msgBox, "messageBox is in the document")
+                assert.include(msgBox.classList.value, "hidden", "message box is hidden")
+                assert.equal(msgBox.innerText, "", "Message box is empty")
+            });
+
+            it('Rendered an error when name is empty', () => {
+                let msgBox = document.querySelector(".messageBox")
+                let button = document.querySelector("#inputButton")
+                button.click()
+                assert.include(msgBox.classList.value, "error", "Message box type is error")
+            });
+        });
+
+        mocha.run();
+
+
+    </script>
+</body>
+
 </html>
